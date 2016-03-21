@@ -3,7 +3,8 @@
 #include"inc/genrand.h"
 #include"inc/print_array.h"
 
-#define CUR_NUM 100
+#define CUR_NUM 50000
+#define CUR_MAX 10000
 
 void bubble_sort(int[], int);
 
@@ -29,9 +30,10 @@ void main()
 	exit(1);
     }
 
-    genrand100(a, CUR_NUM);
+    genrand100(a, CUR_NUM, CUR_MAX);
 
     bubble_sort(a, CUR_NUM);
     
-    print_array(a, CUR_NUM);
+   // print_array(a, CUR_NUM);
+   printf("OK!\n");
 }
