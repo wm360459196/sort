@@ -1,28 +1,27 @@
 #include<stdio.h>
-#include"inc/swap_xy.h"
+#include"inc/swap.h"
 #include"inc/genrand.h"
 #include"inc/print_array.h"
 
 #define CUR_NUM 100
 
-void bubble_sort(int[], int);
-
-void bubble_sort(int a[], int count)
+void choise_sort(int *a, int num)
 {
-    int i, j;
-    for(i=count-1;i>0;i--)
-	for(j=0;j<i;j++) {
-	    if(a[j]>a[j+1]) {
-		//swap_xy1(a+j, a+j+1);
-		swap_xy2(a+j, a+j+1);
-	    }
+    int i, j, k;
+    for(i=0;i<num-1;i++) {
+	k = i;
+	for(j=i+1;j<num;j++) {
+	   if(a[k] > a[j]) k = j;
+	   if(k != i) {
+		swap_xy1(a[i], a[k]);
+	   }
 	}
+    }
 }
 
 void main()
 {
-    int i;
-    int *a;
+    int *a = NULL;
     a = (int *)malloc(CUR_NUM * sizeof(int));
     if(NULL == a) {
 	printf("malloc error, memory not enough!\n");
@@ -31,7 +30,7 @@ void main()
 
     genrand100(a, CUR_NUM);
 
-    bubble_sort(a, CUR_NUM);
-    
+    choise_sort(a, CUR_NUM);
+
     print_array(a, CUR_NUM);
 }
